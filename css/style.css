@@ -1,0 +1,70 @@
+:root{
+    --main-color: #FEC260;
+}
+body{
+    font-family: "PT Sans Caption", sans-serif;
+    font-weight: 600;
+    background-color: #F7ECDE;
+}
+h1.heading{
+    font-family: "Pacifico", cursive;
+    font-weight: 500;
+    position: relative;
+    width: fit-content;
+}
+h1.heading::after{
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    bottom: 0;
+    left: 0;
+    background-color: var(--main-color);
+    transition: height .5s;
+    z-index: -1;
+}
+h1.heading:hover::after{
+    height: 65%;
+}
+h2.heading {
+    font-family: "Righteous", sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    background-image: linear-gradient(to right, #3ca55c, #b5ac49);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+h2.heading .iBefore{
+    color: #3fa65c;
+}
+h2.heading .iAfter{
+    color: #b2ab49;
+}
+::selection{
+    color: black;
+    background-color: var(--main-color);
+}
+.btn-brown {
+    background-color: #d1512d;
+    color: white;
+    transition: .5s;
+}
+.btn-brown:hover{
+    color: white;
+    background-color: #BB4120;
+}
+.btn-visit{
+    background-color: #9eb23b;
+    color: white;
+}
+.btn-visit:hover{
+    background-color: #8a9e23;
+    color: white;
+    border-color: #6e8018;
+}
+.container .info{
+    
+    border-top: 2px dotted #000;
+    border-bottom: 2px dotted #000;
+}
