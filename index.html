@@ -7,16 +7,18 @@
     <!-- FavIcon Image -->
     <link rel="shortcut icon" href="images/bookmark.png" type="image/x-icon" />
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Righteous&display=swap"
+      rel="stylesheet" />
     <!-- FontAwesome File -->
-    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/all.min.css" />
     <!-- Bootstrap File -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- CSS File -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
   <body>
     <div class="container my-5">
       <h1 class="heading mb-5 text-center mx-auto">Bookmarker</h1>
@@ -29,16 +31,41 @@
         <div class="form">
           <div class="mb-3">
             <i class="fa-solid fa-book-bookmark pe-2"></i>
-            <label for="siteName" class="form-label">Site Name</label>
-            <input type="text" class="form-control" id="siteName" placeholder="Bookmark Name" required>
+            <label for="siteNameInput" class="form-label">Site Name</label>
+            <input
+              type="text"
+              oninput="validation(this)"
+              class="form-control"
+              id="siteNameInput"
+              placeholder="Bookmark Name"
+              required />
+            <div class="alert alert-danger d-none">
+              Site name must contain at least 3 characters& at most 12
+              characters, 😊
+            </div>
           </div>
           <div class="mb-3">
             <i class="fa-solid fa-link pe-2"></i>
-            <label for="siteURL" class="form-label">Site URL</label>
-            <input type="url" class="form-control" id="siteURL" placeholder="Website URL" required>
+            <label for="siteURLInput" class="form-label">Site URL</label>
+            <input
+              type="url"
+              oninput="validation(this)"
+              class="form-control"
+              id="siteURLInput"
+              placeholder="Website URL"
+              required />
+            <div class="alert alert-danger d-none">
+              Site URL must be a valid one, should begin with "https://" or
+              "http://", 🔗
+            </div>
           </div>
           <div class="mt-5 text-center">
-            <button type="button" class="btn btn-brown px-5 py-2" onclick="addSite()">Submit</button>
+            <button
+              type="button"
+              class="btn btn-brown px-5 py-2"
+              onclick="addSite()">
+              Submit
+            </button>
           </div>
         </div>
       </div>
@@ -52,19 +79,9 @@
             <th scope="col">Delete</th>
           </tr>
         </thead>
-        <tbody id="contentBody">
-          
-              
-        </tbody>
+        <tbody id="contentBody"></tbody>
       </table>
-
-
-
-
     </div>
-
-
-
 
     <!-- ----- FontAwesome JS Link ----- -->
     <script src="js/all.min.js"></script>
