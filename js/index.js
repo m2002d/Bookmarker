@@ -34,7 +34,7 @@ function addSite() {
 function validation(ele) {
     var Regex = {
         siteNameInput: /^[a-zA-Z_]{3,12}$/gi,
-        siteURLInput: /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/g,
+        siteURLInput: /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(\/[a-zA-Z0-9\-._~:\/?#[\]@!$&'()+,;=])?$/ig,
     }
 
     if (Regex[ele.id].test(ele.value)) {
