@@ -4,12 +4,12 @@ var contentBody = document.getElementById('contentBody');
 
 
 var siteList = [];
-
+// Check If LocalStorage isNotEmpty
 if (localStorage.getItem('bookmarkList') !== null) {
     siteList = JSON.parse(localStorage.getItem('bookmarkList'));
     displaySiteList();
 }
-
+// Add Bookmark Function
 function addSite() {
     var siteObj =
     {
@@ -17,53 +17,23 @@ function addSite() {
         siteURL: siteURLInput.value,
     };
 
-    if (validation(siteNameInput) && validation(siteURLInput)) {
+    if ( validation(siteNameInput) && validation(siteURLInput) ) {
+        // Check URL Is Added Already Or Not 
+        var isUrlExists = siteList.some(site => site.siteURL === siteURLInput.value);
+        if(isUrlExists) {
+            alert(`This URL "${siteURLInput.value}" 🔗 already added.`);
+            return;
+        }
         siteList.push(siteObj);
         localStorage.setItem('bookmarkList', JSON.stringify(siteList));
         displaySiteList();
         clearForm();
     }
-    // var urlPattern = /^(http|https):\/\/([\w-]+(\.[\w-]+)+)(\/[\w-./?%&amp;=]*)?$/;
-    // if (siteNameInput.value !== '' && siteURLInput.value !== '') { // check if user entered site name and URL
-    //     if (siteList.length > 0) {
-    //         if (urlPattern.test(siteObj.siteURL)) {  // Test URL is valid or not
-    //             for (let i = 0; i < siteList.length; i++) {
-
-    //                 if (siteList[i].siteURL === siteObj.siteURL) // Check if already added or not
-    //                 {
-    //                     alert('This URL 🔗 already exists.');
-    //                     break;
-    //                 }
-    //                 else // if not add then add it
-    //                 {
-    //                     siteList.push(siteObj);
-    //                     localStorage.setItem('bookmarkList', JSON.stringify(siteList));
-    //                     displaySiteList();
-    //                     clearForm();
-    //                     break;
-    //                 }
-    //             }
-    //         } else  // If URL is not valid
-    //         {
-    //             alert('It seems the URL you entered might not be valid. Please check it and try again. Make sure it starts with "http://" or "https://". 😊');
-    //         }
-    //     }
-    //     else {
-    //         alert('Add first item');
-    //         siteList.push(siteObj);
-    //         localStorage.setItem('bookmarkList', JSON.stringify(siteList));
-    //         displaySiteList();
-    //         clearForm();
-    //     }
-    // }
-    // else { // If Name and URL are not entered
-    //     alert('Please enter a Site Name & Site URL 🧐');
-    // }
 }
-
+// Validation Function
 function validation(ele) {
     var Regex = {
-        siteNameInput: /^[\w]{3,12}$/gi,
+        siteNameInput: /^[a-zA-Z_]{3,12}$/gi,
         siteURLInput: /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/g,
     }
 
@@ -81,6 +51,7 @@ function validation(ele) {
     }
 
 }
+// Display Function
 function displaySiteList() {
     var cartona = '';
     for (var i = 0; i < siteList.length; i++) {
@@ -94,13 +65,13 @@ function displaySiteList() {
     }
     contentBody.innerHTML = cartona;
 }
-
+// Delete Function
 function deleteSite(index) {
     siteList.splice(index, 1);
     localStorage.setItem('bookmarkList', JSON.stringify(siteList));
     displaySiteList();
 }
-
+// Clear Input Field After Added
 function clearForm() {
     siteNameInput.value = null;
     siteURLInput.value = null;
